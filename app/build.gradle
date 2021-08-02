@@ -32,3 +32,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 }
+
+//TODO View Binding to be implemented.
