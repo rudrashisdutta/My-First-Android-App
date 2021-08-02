@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/offWhite</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="actionBarStyle">@style/AppTheme.DarkActionBar</item>
+    </style>
+    <style name="AppTheme.DarkActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="background">@color/actionBar</item>
+        <item name="titleTextStyle">@style/AppTheme.DarkActionBarText</item>
+    </style>
+    <style name="AppTheme.DarkActionBarText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/actionBarTitle</item>
+    </style>
+</resources>

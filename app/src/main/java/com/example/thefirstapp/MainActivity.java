@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,34 +27,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnStart=(Button)this.findViewById(R.id.btnStart);
-        btnStartAgain=(Button)this.findViewById(R.id.btnStartAgain);
-        btnExit=(Button)this.findViewById(R.id.btnExit);
-        txtMessage=(TextView)this.findViewById(R.id.txtMessage);
+        btnStart= this.findViewById(R.id.btnStart);
+        btnStartAgain= this.findViewById(R.id.btnStartAgain);
+        btnExit= this.findViewById(R.id.btnExit);
+        txtMessage= this.findViewById(R.id.txtMessage);
 
         //Action Bar Stuff
         ActionBar actionBar=getSupportActionBar();
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#000000"));
+                = new ColorDrawable(getColor(R.color.actionBar));
+        assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(String.format("%s","My First App"));
         //Action Bar Stuff
 
         btnStart.setOnClickListener(this);
-        btnStartAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txtMessage.setVisibility(View.VISIBLE);
-                btnStart.setVisibility(View.VISIBLE);
-                btnExit.setVisibility(View.GONE);
-                btnStartAgain.setVisibility(View.GONE);
-            }
+        btnStartAgain.setOnClickListener(v -> {
+            txtMessage.setVisibility(View.VISIBLE);
+            btnStart.setVisibility(View.VISIBLE);
+            btnExit.setVisibility(View.GONE);
+            btnStartAgain.setVisibility(View.GONE);
         });
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btnExit.setOnClickListener(v -> finish());
         btnStartAgain.setVisibility(View.GONE);
         btnExit.setVisibility(View.GONE);
     }
@@ -62,12 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AlertDialog dialog=new AlertDialog.Builder( this)
                 .setMessage("What would you like to talk about?")
                 .setView(input)
-                .setPositiveButton( "Conitnue", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int width){
-                        keepTalking(input.getText().toString());
-                    }
-                })
+                .setPositiveButton( "Conitnue", (dialog1, width) -> keepTalking(input.getText().toString()))
                 .setNegativeButton( "Cancel", null)
                 .show();
         startAgain();
